@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roster Management Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&family=Barlow:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg-dark: #0f0f1a;
+    --card-bg: #0a220a;
+    --green-mid: #1e6b1e;
+    --green-light: #a3ffa3;
+    --yellow: #FFD700;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-dark);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    color: var(--white);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+  }
+
+  /* হেডার স্টাইল */
+  header h1 {
+    font-family: 'Teko', sans-serif;
+    color: var(--yellow);
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255,215,0,0.4);
+    animation: fadeInDown 0.8s ease-out;
+  }
+
+  header p {
+    color: #bbb;
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+    animation: fadeIn 1.2s ease-out;
+  }
+
+  /* গ্রিড লেআউট */
+  .departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    width: 100%;
+    perspective: 1000px;
+  }
+
+  /* ডিপার্টমেন্ট কার্ড স্টাইল */
+  .dept-card {
+    background: var(--card-bg);
+    border: 2px solid var(--green-mid);
+    border-radius: 15px;
+    padding: 35px 25px;
+    text-decoration: none;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  }
+
+  /* হোভার ইফেক্ট */
+  .dept-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    border-color: var(--yellow);
+    box-shadow: 0 15px 35px rgba(30, 107, 30, 0.4);
+  }
+
+  .dept-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
+    transition: 0.5s;
+  }
+
+  .dept-card:hover::before {
+    left: 100%;
+  }
+
+  /* কার্ডের ভেতরের আইকন */
+  .dept-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+  }
+
+  .dept-card:hover .dept-icon {
+    transform: rotate(-10deg) scale(1.1);
+  }
+
+  /* কার্ডের নাম */
+  .dept-name {
+    font-family: 'Teko', sans-serif;
+    font-size: 2rem;
+    color: var(--yellow);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .dept-status {
+    font-size: 0.9rem;
+    color: #88b088;
+    font-weight: 500;
+  }
+
+  /* অ্যানিমেশনস */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 2.5rem; }
+    header p { font-size: 1rem; margin-bottom: 30px; }
+    .departments-grid { gap: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>🗂️ MASTER ROSTER DASHBOARD</h1>
+    <p>Select a department to view or manage daily shift rosters</p>
+  </header>
+
+  <main class="departments-grid">
+    
+    <a href="children-roster.html" class="dept-card">
+      <div class="dept-icon">👦👧</div>
+      <div class="dept-name">Children</div>
+      <div class="dept-status">Click to open roster</div>
+    </a>
+
+    <a href="Panjabi-roster.html" class="dept-card">
+      <div class="dept-icon">👔</div>
+      <div class="dept-name">Panjabi</div>
+      <div class="dept-status">Click to open roster</div>
+    </a>
+
+    <a href="Taga-roster.html" class="dept-card">
+      <div class="dept-icon">👕</div>
+      <div class="dept-name">Taga</div>
+      <div class="dept-status">Click to open roster</div>
+    </a>
+
+    <a href="security-roster.html" class="dept-card">
+      <div class="dept-icon">🛡️</div>
+      <div class="dept-name">Security</div>
+      <div class="dept-status">Click to open roster</div>
+    </a>
+
+    <a href="management-roster.html" class="dept-card">
+      <div class="dept-icon">📊</div>
+      <div class="dept-name">Management</div>
+      <div class="dept-status">Click to open roster</div>
+    </a>
+
+  </main>
+</div>
+
+</body>
+</html>
